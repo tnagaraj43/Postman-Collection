@@ -1,0 +1,796 @@
+{
+	"info": {
+		"_postman_id": "f577aad0-fe1d-47f0-8de3-9e0a9b6f2214",
+		"name": "New Cross Connect Charges and IB Asset",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lookup active cross connect subscription by customer and location",
+			"id": "3131687a-29e1-4627-91f9-e67d0f243802",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptions?q=CustomerLocation_c=xxx;Location_c=xxx;status=ORA_Active",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptions"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "CustomerLocation_c=xxx;Location_c=xxx;status=ORA_Active",
+							"description": "or draft (to verify subscription manager)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creat a subscirption",
+			"id": "59de4fed-d56f-4380-b35b-a387062fd95d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SubscriptionNumber\": \"000-C00745_XC_Test_04272023_v1\", //process generate - fomular \"customer location\" + \"_\" +\"XC\"\r\n    \"BusinessUnitId\": 300000005793193,\r\n    \"LegalEntityId\": 300000356117053,\r\n    \"SubscriptionProfileId\": 300000376076235,\r\n    \"PrimaryPartyId\": 100000091630658,\r\n    \"Currency\": \"USD\",\r\n    \"StartDate\": \"2023-04-01\",\r\n    //\"EndDate\": \"2024-12-31\",\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    \"BillToAccountId\": 100000093309558,\r\n    //\"BillToAccountNumber\": \"241524\",\r\n    \"BillToSiteUseId\": 100000093319158,\r\n    \"ShipToParty\": 100000091630658,\r\n    //\"ShipToPartyName\": \"Vodafone US Operations Inc.\",\r\n    \"ShipToPartySiteId\": 100000112664520,\r\n    //\"ShipToSite\": \"60 HUDSON STREET,NEW YORK, NEW YORK, NY, 10013\", \r\n    \"PaymentTermsName\": \"Due 1st of Mon\", //\"Immediate\" \r\n    //DLR\r\n    \"Location_c\":\"JFK12\",\r\n    \"CustomerLocation_c\":\"000-C00745\", \r\n    \"ProductCategory_c\":\"CROSS_CONNECT\", //static\r\n    \"GenerateBillingSchedule\": \"Y\" //static\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions"
+			},
+			"response": [
+				{
+					"id": "0765da02-4063-4ab8-9e03-67b27e5e49aa",
+					"name": "Creat a subscirption",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SubscriptionNumber\": \"SIN12-C11232_XC_JH_TEST\",\r\n    \"BusinessUnitId\": 300000005793115,\r\n    \"LegalEntityId\": 300000337435975,\r\n    \"SubscriptionProfileId\": 300001012410195,\r\n    \"PrimaryPartyId\": 300000432783338,\r\n    \"Currency\": \"SGD\",\r\n    \"StartDate\": \"2023-02-15\",\r\n    //\"EndDate\": \"2024-12-31\",\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    \"BillToAccountId\": 100001565489277,\r\n    //\"BillToAccountNumber\": \"241524\",\r\n    \"BillToSiteUseId\": 100001565489362,\r\n    \"ShipToParty\": 300000432783338,\r\n    //\"ShipToPartyName\": \"Northern Point Technology Private Limited\",\r\n    \"ShipToPartySiteId\": 100001565491256,\r\n    //\"ShipToSite\": \"60 HUDSON STREET,NEW YORK, NEW YORK, NY, 10013\",\r\n    \"PaymentTermsName\": \"Due 1st of Mon\", //\"Immediate\"\r\n    //DLR\r\n    \"Location_c\":\"SIN012\",\r\n    \"CustomerLocation_c\":\"SIN12-C11232\",\r\n    \"ProductCategory_c\":\"CROSS_CONNECT\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.oracle.adf.resourceitem+json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3188"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Location",
+							"value": "https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST"
+						},
+						{
+							"key": "X-ORACLE-DMS-ECID",
+							"value": "005yS_aL39k0fpTpq8k3yY0005pi0004KO"
+						},
+						{
+							"key": "Link",
+							"value": "<https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST>;rel=\"self\";kind=\"item\";name=\"subscriptions\""
+						},
+						{
+							"key": "X-ORACLE-DMS-RID",
+							"value": "0:3"
+						},
+						{
+							"key": "ETag",
+							"value": "\"ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178\""
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "REST-Framework-Version",
+							"value": "1"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Apr 2023 19:18:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "AKGRN",
+							"value": "0.8d973017.1682018283.97d7b03"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"SubscriptionId\": 300001014339923,\n    \"SubscriptionNumber\": \"SIN12-C11232_XC_JH_TEST\",\n    \"BusinessUnitId\": 300000005793115,\n    \"BusinessUnitName\": \"Singapore_BU\",\n    \"LegalEntityId\": 300000337435975,\n    \"LegalEntityName\": \"Digital Singapore 2 Pte Ltd\",\n    \"SubscriptionProfileId\": 300001012410195,\n    \"SubscriptionProfileName\": \"APAC-DLR Monthly Calendar Month-to-Month\",\n    \"PrimaryPartyId\": 300000432783338,\n    \"PrimaryPartyName\": \"Northern Point Technology Private Limited\",\n    \"PricedOnDate\": \"2023-04-20T00:00:00+00:00\",\n    \"PricingStrategyId\": null,\n    \"PricingStrategyExplanation\": null,\n    \"PricingSegment\": null,\n    \"PricingSegmentExplanation\": null,\n    \"SegmentExplanationMessage\": null,\n    \"Currency\": \"SGD\",\n    \"CurrencyName\": \"Singapore Dollar\",\n    \"CurrencyConversionRate\": null,\n    \"CurrencyConversionRateType\": null,\n    \"CurrencyConversionRateDate\": null,\n    \"StartDate\": \"2023-02-15\",\n    \"Duration\": null,\n    \"Period\": null,\n    \"EndDate\": null,\n    \"DefinitionOrganizationId\": 300000330053639,\n    \"DefinitionOrganizationName\": \"DLR Item Master Org\",\n    \"PartialPeriodType\": \"ORA_ACTUAL\",\n    \"PartialPeriodStart\": \"ORA_CALENDAR\",\n    \"CloseReason\": null,\n    \"CloseDescription\": null,\n    \"ClosedDate\": null,\n    \"CloseCreditMethod\": null,\n    \"ApprovalNote\": null,\n    \"CancelReason\": null,\n    \"CancelDescription\": null,\n    \"CanceledDate\": null,\n    \"ApprovedDate\": null,\n    \"RenewedDate\": null,\n    \"ShortDescription\": null,\n    \"Description\": null,\n    \"Status\": \"ORA_DRAFT\",\n    \"UserStatus\": null,\n    \"BillService\": \"ORA_BILL\",\n    \"BillServiceName\": \"Bill\",\n    \"InvoicingRuleId\": -2,\n    \"InvoicingRuleName\": \"Advance Invoice\",\n    \"BillingDateCode\": \"ORA_PERIOD_START\",\n    \"BillingDateName\": \"Period start\",\n    \"BillOnDay\": null,\n    \"BillingOffsetDays\": null,\n    \"BillingFrequency\": \"Mon\",\n    \"BillingFrequencyName\": \"Month\",\n    \"AccountingRuleId\": 1,\n    \"AccountingRuleName\": \"Immediate\",\n    \"TransactionTypeName\": \"Subscription INV\",\n    \"BillingSystem\": \"ORA_OSS_FUSION\",\n    \"SubscriptionInvoiceText\": \"[$Product Name]: [$Charge Name] [$Bill from Date]-[$Bill to Date]\",\n    \"CoverageInvoiceText\": \"[$Product Name]: [$Charge Name] [$Bill from Date]-[$Bill to Date]\",\n    \"BillToPartyId\": 300000432783338,\n    \"BillToPartyNumber\": null,\n    \"BillToAccountId\": 100001565489277,\n    \"BillToAccountNumber\": \"600917\",\n    \"BillToAccountDescription\": \"Northern Point Technology Private Limited\",\n    \"BillToSiteUseId\": 100001565489362,\n    \"BillToAddress\": \"1 Fusionopolis Place,#17-10 Galaxis,Singapore,Singapore 138522\",\n    \"ShipToParty\": 300000432783338,\n    \"ShipToPartyName\": \"Northern Point Technology Private Limited\",\n    \"ShipToPartySiteId\": 100001565491256,\n    \"ShipToSite\": \"11 Loyang Close,Singapore,Singapore 506756\",\n    \"PaymentMethod\": null,\n    \"PaymentMethodName\": null,\n    \"PONumber\": null,\n    \"WireNumber\": null,\n    \"PaymentTermsId\": 300000373737870,\n    \"PaymentTermsName\": \"Due 1st of Mon\",\n    \"TaxClassificationCode\": null,\n    \"TaxClassificationMeaning\": null,\n    \"ExemptCertificateNumber\": null,\n    \"ExemptReason\": null,\n    \"ExemptReasonMeaning\": null,\n    \"TaxExemptionHandling\": \"S\",\n    \"TaxExemptionHandlingName\": \"Standard\",\n    \"DocumentFiscalClassification\": null,\n    \"CustomerAcceptance\": null,\n    \"InternalApproval\": \"REQUIRED\",\n    \"LayoutTemplate\": null,\n    \"CommunicationChannel\": null,\n    \"PrimarySalesPerson\": null,\n    \"NegotiationLanguage\": null,\n    \"QuoteToContactId\": null,\n    \"EnableRenewalRemindersFlag\": null,\n    \"RenewalProcess\": null,\n    \"DaysBeforeExpiry\": null,\n    \"QuoteToCcEmail\": null,\n    \"RenewalPricingMethodUsed\": null,\n    \"RenewalProcessUsed\": null,\n    \"PriceAdjustmentPercentUsed\": null,\n    \"DaysBeforeExpiryUsed\": null,\n    \"AssigneeId\": null,\n    \"AssigneeType\": null,\n    \"TotalContractValue\": null,\n    \"EstimatedTax\": null,\n    \"CreditedAmount\": null,\n    \"ClosedAmount\": null,\n    \"CanceledAmount\": null,\n    \"InvoicedAmount\": null,\n    \"SourceSystem\": null,\n    \"SourceKey\": null,\n    \"SourceNumber\": null,\n    \"RenewalTemplateId\": null,\n    \"NotificationTemplateId\": null,\n    \"RenewalSubscriptionProfileId\": null,\n    \"DefaultLanguage\": null,\n    \"GenerateBillingSchedule\": null,\n    \"TransactionType\": \"ORA_SUBSCRIPTION\",\n    \"PricingSystem\": \"TP_PRICER\",\n    \"PricingError\": null,\n    \"CorpCurrencyCode\": \"USD\",\n    \"CurcyConvRateType\": \"Spot\",\n    \"RenewalCustomerAcceptance\": null,\n    \"RenewalInternalApproval\": null,\n    \"RenewalPriceAdjustmentBasis\": null,\n    \"RenewalPriceAdjustmentPercent\": null,\n    \"RenewalPriceAdjustmentType\": null,\n    \"AttachmentEntityName\": \"OSS_DOC_SUBSCRIPTION_AGREEMENT\",\n    \"AttachmentEntityName1\": \"OSS_DOC_SUPPORTING_DOCUMENTS\",\n    \"CreatedBy\": \"SVC_ERP_OIC_INTEGRATION\",\n    \"CreationDate\": \"2023-04-20T19:18:06+00:00\",\n    \"LastUpdatedBy\": \"SVC_ERP_OIC_INTEGRATION\",\n    \"LastUpdateDate\": \"2023-04-20T19:18:06.202+00:00\",\n    \"LastUpdateLogin\": \"F9C2F22F132F99B7E0539258310A5370\",\n    \"WarrantyYN\": null,\n    \"RenewalType\": null,\n    \"CustomerTrxTypeSequenceId\": 300000373742358,\n    \"UsageCapture\": \"ORA_THIRD_PARTY\",\n    \"LineAutonumberEnabledYn\": false,\n    \"RenewalPaymentMethod\": null,\n    \"RenewalPoNumber\": null,\n    \"RenewalWireNumber\": null,\n    \"RenewalPaymentMethodName\": null,\n    \"UserStatusName\": null,\n    \"RepriceFlag\": null,\n    \"BillToSiteNumber\": null,\n    \"DefinitionOrganizationCode\": null,\n    \"PrimaryPartyNumber\": null,\n    \"PrimarySalesPersonNumber\": null,\n    \"ShipToPartyNumber\": null,\n    \"ShipToSiteNumber\": null,\n    \"SalesOrderNumber\": null,\n    \"SalesOrderId\": null,\n    \"BillToContactId\": null,\n    \"ShipToAccountId\": null,\n    \"ShipToContactId\": null,\n    \"WarehouseId\": null,\n    \"BillToPartyName\": \"Northern Point Technology Private Limited\",\n    \"ShipToAccountNumber\": null,\n    \"ShipToAccountDescription\": null,\n    \"ShipToContactName\": null,\n    \"WareHouseName\": null,\n    \"BillToContactName\": null,\n    \"BillToContactNumber\": null,\n    \"ShipToContactNumber\": null,\n    \"ShipToContactPartyId\": null,\n    \"UsageInvoiceLayoutTemplate\": null,\n    \"RenewalDuration\": null,\n    \"RenewalDurationPeriod\": null,\n    \"RenewalDurationPeriodName\": null,\n    \"OverrideCreditAmount\": null,\n    \"CalculatedCreditAmount\": null,\n    \"RenewPerpetuallyFlag\": null,\n    \"CustomerTerminationNotificationPeriod_c\": \"60\",\n    \"FacilityAddress_c\": null,\n    \"Location_c\": \"SIN012\",\n    \"MSAContractNumber_c\": null,\n    \"PriceIncreaseNotificationDays_c\": \"60\",\n    \"RenewalDuration_c\": \"Renew for 12 months\",\n    \"HardCommencementDate_c\": null,\n    \"SuiteIdentifier_c\": null,\n    \"DefaultBilltoContact_Id_c\": null,\n    \"DefaultBilltoContact_c\": null,\n    \"DefaultBilltoContactRoleId_c\": null,\n    \"BlockAddress_c\": null,\n    \"ProductCategory_c\": \"CROSS_CONNECT\",\n    \"NextPriceIncreaseDate_c\": null,\n    \"Autorenewal_c\": false,\n    \"CustomerLocation_c\": \"SIN12-C11232\",\n    \"LegacyBAN_c\": null,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST\",\n            \"name\": \"subscriptions\",\n            \"kind\": \"item\",\n            \"properties\": {\n                \"changeIndicator\": \"ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178\"\n            }\n        },\n        {\n            \"rel\": \"canonical\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST\",\n            \"name\": \"subscriptions\",\n            \"kind\": \"item\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/AccountingRuleVA\",\n            \"name\": \"AccountingRuleVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/BillToAccountVA\",\n            \"name\": \"BillToAccountVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/BillingDayLOVVO\",\n            \"name\": \"BillingDayLOVVO\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/PriceAdjustmentBasisVA\",\n            \"name\": \"PriceAdjustmentBasisVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/OutputTaxClassificationVA\",\n            \"name\": \"OutputTaxClassificationVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/CloseReasonVA\",\n            \"name\": \"CloseReasonVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/ConversionRateTypeVA\",\n            \"name\": \"ConversionRateTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/InvoiceRuleVA\",\n            \"name\": \"InvoiceRuleVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/FK_LOVVA_For_DefaultBilltoContact_c\",\n            \"name\": \"FK_LOVVA_For_DefaultBilltoContact_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/TransactionTypeVA\",\n            \"name\": \"TransactionTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/RenewalTypeVA\",\n            \"name\": \"RenewalTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/LOVVA_For_ProductCategory_c\",\n            \"name\": \"LOVVA_For_ProductCategory_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/SubscriptionProfileVA\",\n            \"name\": \"SubscriptionProfileVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/BillingDateCodeVA\",\n            \"name\": \"BillingDateCodeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/CustomerAcceptanceVA\",\n            \"name\": \"CustomerAcceptanceVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/SubscriptionsPaymentMethodVA\",\n            \"name\": \"SubscriptionsPaymentMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/PaymentMethodVA\",\n            \"name\": \"PaymentMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/InternalApprovalVA\",\n            \"name\": \"InternalApprovalVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/UsageInvoiceLayoutTemplateVA\",\n            \"name\": \"UsageInvoiceLayoutTemplateVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/ShipToPartyVA\",\n            \"name\": \"ShipToPartyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/LOVVA_For_DefaultBilltoContact_c\",\n            \"name\": \"LOVVA_For_DefaultBilltoContact_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/LOVVA_For_RenewalDuration_c\",\n            \"name\": \"LOVVA_For_RenewalDuration_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/BillingFrequencyVA\",\n            \"name\": \"BillingFrequencyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/RenewalVA\",\n            \"name\": \"RenewalVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/ShipToAccountVA\",\n            \"name\": \"ShipToAccountVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/TimeCodeUnitsVA\",\n            \"name\": \"TimeCodeUnitsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/BillServiceVA\",\n            \"name\": \"BillServiceVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/UserPVA\",\n            \"name\": \"UserPVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/WareHouseVA\",\n            \"name\": \"WareHouseVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/LegalEntityAllVA\",\n            \"name\": \"LegalEntityAllVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/ShipToExternalContactsVA\",\n            \"name\": \"ShipToExternalContactsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/TaxExemptionControlVA\",\n            \"name\": \"TaxExemptionControlVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/StatusVA\",\n            \"name\": \"StatusVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/BusinessUnitAllVA\",\n            \"name\": \"BusinessUnitAllVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/PrimaryPartyVA\",\n            \"name\": \"PrimaryPartyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/PriceAdjustmentTypeVA\",\n            \"name\": \"PriceAdjustmentTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/PaymentTermsLOVVA\",\n            \"name\": \"PaymentTermsLOVVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/ShipToPartySiteVA\",\n            \"name\": \"ShipToPartySiteVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/ExemptCertificateVA\",\n            \"name\": \"ExemptCertificateVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/BillToContactsVA\",\n            \"name\": \"BillToContactsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/LanguageVA\",\n            \"name\": \"LanguageVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/DefinitionOrgVA\",\n            \"name\": \"DefinitionOrgVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/LOVVA_For_Autorenewal_c\",\n            \"name\": \"LOVVA_For_Autorenewal_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/LOVVA_For_HardCommencementDate_c\",\n            \"name\": \"LOVVA_For_HardCommencementDate_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/DocFiscalClassificationVA\",\n            \"name\": \"DocFiscalClassificationVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/CommunicationChannelVA\",\n            \"name\": \"CommunicationChannelVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/PeriodVA\",\n            \"name\": \"PeriodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/CancelReasonVA\",\n            \"name\": \"CancelReasonVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/LayoutTemplateVA\",\n            \"name\": \"LayoutTemplateVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/lov/CurrencyVA\",\n            \"name\": \"CurrencyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/child/contractAttachment\",\n            \"name\": \"contractAttachment\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/child/creditCards\",\n            \"name\": \"creditCards\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/child/flexFields\",\n            \"name\": \"flexFields\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/child/parties\",\n            \"name\": \"parties\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/child/products\",\n            \"name\": \"products\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/child/salesCredits\",\n            \"name\": \"salesCredits\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/child/supportingDocumentAttachments\",\n            \"name\": \"supportingDocumentAttachments\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/child/validateSubscription\",\n            \"name\": \"validateSubscription\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/previewSubscriptions\",\n            \"name\": \"previewSubscriptions\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/putOnHold\",\n            \"name\": \"putOnHold\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/removeHold\",\n            \"name\": \"removeHold\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/activate\",\n            \"name\": \"activate\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/cancel\",\n            \"name\": \"cancel\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/close\",\n            \"name\": \"close\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/renew\",\n            \"name\": \"renew\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/raiseUserTransition\",\n            \"name\": \"raiseUserTransition\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/calculateCreditAmount\",\n            \"name\": \"calculateCreditAmount\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-test.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions/SIN12-C11232_XC_JH_TEST/action/calculateEarlyTerminationFee\",\n            \"name\": \"calculateEarlyTerminationFee\",\n            \"kind\": \"other\"\n        }\n    ]\n}"
+				},
+				{
+					"id": "34659e22-0288-480c-ada8-591c6b9a1724",
+					"name": "Creat a subscirption - already exists",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SubscriptionNumber\": \"SIN12-C11232_XC_JH_TEST\",\r\n    \"BusinessUnitId\": 300000005793115,\r\n    \"LegalEntityId\": 300000337435975,\r\n    \"SubscriptionProfileId\": 300001012410195,\r\n    \"PrimaryPartyId\": 300000432783338,\r\n    \"Currency\": \"SGD\",\r\n    \"StartDate\": \"2023-02-15\",\r\n    //\"EndDate\": \"2024-12-31\",\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    \"BillToAccountId\": 100001565489277,\r\n    //\"BillToAccountNumber\": \"241524\",\r\n    \"BillToSiteUseId\": 100001565489362,\r\n    \"ShipToParty\": 300000432783338,\r\n    //\"ShipToPartyName\": \"Northern Point Technology Private Limited\",\r\n    \"ShipToPartySiteId\": 100001565491256,\r\n    //\"ShipToSite\": \"60 HUDSON STREET,NEW YORK, NEW YORK, NY, 10013\",\r\n    \"PaymentTermsName\": \"Due 1st of Mon\", //\"Immediate\"\r\n    //DLR\r\n    \"Location_c\":\"SIN012\",\r\n    \"CustomerLocation_c\":\"SIN12-C11232\",\r\n    \"ProductCategory_c\":\"CROSS_CONNECT\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions"
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.oracle.adf.resourceitem+json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Location",
+							"value": ""
+						},
+						{
+							"key": "X-ORACLE-DMS-ECID",
+							"value": "005yT_emnp50fpTpq8k3yY0005380001V1"
+						},
+						{
+							"key": "X-ORACLE-DMS-RID",
+							"value": "0:3"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "REST-Framework-Version",
+							"value": "1"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Apr 2023 14:24:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "AKGRN",
+							"value": "0.2e6533b8.1682087078.58467e2"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "The subscription number must be unique. (OSS-6075017)"
+				},
+				{
+					"id": "f055ef64-3aa2-496f-9b38-f2590e88ce29",
+					"name": "Creat a subscirption",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SubscriptionNumber\": \"150-C143350_XC_Test_05222023_v1\", //process generate - fomular \"customer location\" + \"_\" +\"XC\"\r\n    \"BusinessUnitId\": 300000005793193,\r\n    \"LegalEntityId\": 300000356116983,\r\n    \"SubscriptionProfileId\": 300000376076235,\r\n    \"PrimaryPartyId\": 100000091628908,\r\n    \"Currency\": \"USD\",\r\n    \"StartDate\": \"2023-05-22\",\r\n    \"BillToAccountId\": 100000093310744,\r\n    \"BillToSiteUseId\": 100000093315815,\r\n    \"ShipToParty\": 100000091628908,\r\n    \"ShipToPartySiteId\": 100000112663623,\r\n    \"SourceSystem\":\"PORTAL\",\r\n    \"PaymentTermsName\": \"Due 1st of Mon\",\r\n    \"Location_c\":\"DFW010\",\r\n    \"CustomerLocation_c\":\"150-C143350\", \r\n    \"ProductCategory_c\":\"CROSS_CONNECT\", //static\r\n    \"GenerateBillingSchedule\": \"Y\" //static\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions"
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Location",
+							"value": ""
+						},
+						{
+							"key": "X-ORACLE-DMS-ECID",
+							"value": "005z4dU96SfBHBVpq0O5yY0002UF0000pr"
+						},
+						{
+							"key": "X-ORACLE-DMS-RID",
+							"value": "0:5"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "REST-Framework-Version",
+							"value": "1"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 22 May 2023 16:00:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "AKGRN",
+							"value": "0.14b72d17.1684771220.19983189"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "ak_bmsc=F0177F9ED3EEA4FBBE0B3E5B3FF36610~000000000000000000000000000000~YAAQFLctFz+SmB+IAQAAMa4wRBMAOrppmU0DNxFJ4L54nMC780piF1d6FhgztQxSZEWwJkHoNukIWcopoHWwRPYyvQiH5fslkUhj2kloKUCYbchl+dgNW2JfAvTSp461q7nordlaHE/7Buow5pNUdCl2Yxl0k+MV2DCNiZ0/w99Aw5T5MKcFjm9T489neLHhckzIxG9SMwx9JVppmcrw+X2M5dqUe6IfrhueYvanGGonMpUvI+Q1YwyA/QuMzf6CTpUCJtjzWdVch7sTmSlLKkG/OEQ7yyYo8+tA8HI0jvPo4t2DqZYTvCl7xyX7IpIu7mFbT5shg6EoOUbREzm7LiskioEssItLQaP1rqpnhfFrmAOSpK43EpjoWcu8yhR188t5b9Xwdi1a; Domain=.fa.us2.oraclecloud.com; Path=/; Expires=Mon, 22 May 2023 18:00:20 GMT; Max-Age=7199; HttpOnly"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "Unable to parse the provided payload"
+				}
+			]
+		},
+		{
+			"name": "Create an install base asset",
+			"id": "33394f7a-3290-44ae-af77-c8df2c4a1eec",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"AssetNumber\": \"130-C14297-XC-809827-INCCC-Fiber-JH-TEST1\", //need to be unique Use product PUID \r\n    //\"OperatingOrganizationName\": \"DLR Item Master Org\",\r\n    \"ItemNumber\": \"INCCC\", \r\n    //\"ItemId\": 100000092407466, //required, TBC\r\n    \"Description\": \"Cross Connect - SCCFBR00844049\", //product description and FNT asset id\r\n    \"Quantity\": 1,\r\n    //\"DESCRIPTION_ASSET_FLAG\":\"Y\",\r\n    \"OperatingOrganizationCode\": \"IMO\",\r\n    \"OperatingOrganizationId\": 300000330053639,\r\n    \"UOMCode\": \"EA\",\r\n    \"CurrentLocationContextCode\": \"ORA_CUSTOMER\",\r\n    \"CurrentLocationContext\": \"Customer Address\",\r\n    \"CustomerSiteNumber\": \"24019001\", //TBC\r\n    \"SoldByBusinessUnitId\": 300000005793193, //TBC name or number\r\n    \"CustomerNumber\": \"440056\",\r\n    \"SalesOrderNumber\": \"809827\" //case number\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/fscmRestApi/resources/latest/installedBaseAssets",
+				"description": "Oracle reference [https://docs.oracle.com/en/cloud/saas/supply-chain-and-manufacturing/23b/fasrp/api-maintenance-installed-base-assets.html](https://docs.oracle.com/en/cloud/saas/supply-chain-and-manufacturing/23b/fasrp/api-maintenance-installed-base-assets.html)"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a subscription product",
+			"id": "73f73d7d-a7e7-4b5b-9c34-dca47385a8cd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SubscriptionNumber\": \"150-C143350_XC\",\r\n    \"LineNumber\": \"2\",\r\n    \"CaseNumberProjectID_c\":\"00825449\",//Case Number \r\n    \"PurchaseOrderNumber_c\":\"21345\",//parent case PO number\r\n    \"SubscriptionProductPuid\": \"150-C143350_XC_2_INCPPT\", //process generate \"subscription number\" + \"line number\" + \"oracle product name\" + \"medium/description\"\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    //\"SalesProductType\": \"SUBSCRIPTION\",\r\n    //\"Description\": \"QP Item for SPT Subscription\",\r\n    //\"InventoryItemId\": 300100012368232,\r\n    //\"ItemUnitOfMeasure\": \"Ea\",\r\n    \"ProductName\": \"INCPPT\",\r\n    //\"Description\": \"One Pack - Fiber\",\r\n    //\"ProductAttribute_c\":\"One Pack - Fiber\", //issue \"Unable to parse the provided payload\"\r\n    \"Quantity\": 1,\r\n    \"StartDate\": \"2023-05-24\", //bill date\r\n    //\"EndDate\": \"2019-12-25\"\r\n    \"Status\": \"ORA_DRAFT\",\r\n    \"Currency\": \"USD\",\r\n    \"BillingFrequency\":\"Mon\",\r\n    \"GenerateBillingSchedule\": \"Y\",\r\n    //\"CaseNumberProjectID_c\": \"\",\r\n    \"AssetIdentificationNumber_c\": \"21345\",\r\n    //\"PurchaseOrderNumber_c\": \"\",\r\n    \"InstallBaseAssetID_c\": \"\", //need to create Install base asset first\r\n    \"EnablePricingTermsFlag\": \"N\",\r\n    \"FulfillmentDate_c\": \"2023-05-24\" //bill date\r\n    //ProductAttribute_c */\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts"
+			},
+			"response": [
+				{
+					"id": "6c4f04ce-0096-4982-b6f0-c928d35bd20e",
+					"name": "Create a subscription product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SubscriptionNumber\": \"150-C143350_XC_Test_05222023_v1\",\r\n    \"LineNumber\": \"1\",\r\n    \"CaseNumberProjectID_c\":\"00825441\",//Case Number \r\n    \"PurchaseOrderNumber_c\":\"1234\",//parent case PO number\r\n    \"SubscriptionProductPuid\": \"150-C143350_XC_Test_05222023_v1-1-INCOP\", //process generate \"subscription number\" + \"line number\" + \"oracle product name\" + \"medium/description\"\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    //\"SalesProductType\": \"SUBSCRIPTION\",\r\n    //\"Description\": \"QP Item for SPT Subscription\",\r\n    //\"InventoryItemId\": 300100012368232,\r\n    //\"ItemUnitOfMeasure\": \"Ea\",\r\n    \"ProductName\": \"INCOP\",\r\n    //\"Description\": \"One Pack - Fiber\",\r\n    //\"ProductAttribute_c\":\"One Pack - Fiber\", //issue \"Unable to parse the provided payload\"\r\n    \"Quantity\": 1,\r\n    \"StartDate\": \"2023-05-22\", //bill date\r\n    //\"EndDate\": \"2019-12-25\"\r\n    \"Status\": \"ORA_DRAFT\",\r\n    \"Currency\": \"USD\",\r\n    \"BillingFrequency\":\"Mon\",\r\n    \"GenerateBillingSchedule\": \"Y\",\r\n    //\"CaseNumberProjectID_c\": \"\",\r\n    \"AssetIdentificationNumber_c\": \"21345\",\r\n    //\"PurchaseOrderNumber_c\": \"\",\r\n    \"InstallBaseAssetID_c\": \"\", //need to create Install base asset first\r\n    \"EnablePricingTermsFlag\": \"N\",\r\n    \"FulfillmentDate_c\": \"2023-05-22\" //bill date\r\n    //ProductAttribute_c */\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.oracle.adf.resourceitem+json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3256"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Location",
+							"value": "https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP"
+						},
+						{
+							"key": "X-ORACLE-DMS-ECID",
+							"value": "005z4hpvE2mBHBVpq0O5yY0002UF0003E5"
+						},
+						{
+							"key": "Link",
+							"value": "<https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP>;rel=\"self\";kind=\"item\";name=\"subscriptionProducts\""
+						},
+						{
+							"key": "X-ORACLE-DMS-RID",
+							"value": "0:3"
+						},
+						{
+							"key": "ETag",
+							"value": "\"ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178\""
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "REST-Framework-Version",
+							"value": "1"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 22 May 2023 17:18:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "AKGRN",
+							"value": "0.36b72d17.1684775914.1d73b2de"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"SubscriptionProductId\": 300001316782402,\n    \"SubscriptionId\": 300001316782317,\n    \"LineNumber\": \"1\",\n    \"SubscriptionProductPuid\": \"150-C143350_XC_Test_05222023_v1-1-INCOP\",\n    \"DefinitionOrganizationId\": 300000330053639,\n    \"SubscriptionNumber\": \"150-C143350_XC_Test_05222023_v1\",\n    \"SalesProductType\": \"SUBSCRIPTION\",\n    \"Description\": \"One Pack\",\n    \"InventoryItemId\": 100000092407478,\n    \"ItemUnitOfMeasure\": \"EA\",\n    \"ProductName\": \"INCOP\",\n    \"Quantity\": 1,\n    \"StartDate\": \"2023-05-22\",\n    \"EndDate\": null,\n    \"CloseReason\": null,\n    \"CloseCreditMethod\": null,\n    \"CancelReason\": null,\n    \"ClosedDate\": null,\n    \"CanceledDate\": null,\n    \"RenewedDate\": null,\n    \"PriceListId\": null,\n    \"UnitPrice\": null,\n    \"Status\": \"ORA_DRAFT\",\n    \"Currency\": \"USD\",\n    \"InvoicingRuleId\": -2,\n    \"InvoicingRuleName\": \"Advance Invoice\",\n    \"BillOnDay\": null,\n    \"BillingOffsetDays\": null,\n    \"BillingFrequency\": \"Mon\",\n    \"BillingFrequencyName\": \"Month\",\n    \"AccountingRuleId\": 1,\n    \"AccountingRuleName\": \"Immediate\",\n    \"TransactionTypeName\": \"Subscription INV\",\n    \"InvoiceText\": \"[$Product Name]: [$Charge Name] [$Bill from Date]-[$Bill to Date]\",\n    \"BillToPartyId\": 100000091628908,\n    \"BillToPartyNumber\": \"189594\",\n    \"BillToAccountId\": 100000093310744,\n    \"BillToAccountNumber\": \"240266\",\n    \"BillToAccountDescription\": \"Charter Communications Operating, LLC\",\n    \"BillToSiteUseId\": 100000093315815,\n    \"BillToAddress\": \"12150 MONUMENT DRIVE, STE. 700,FAIRFAX, FAIRFAX (IND CITY), VA, 22033\",\n    \"ShipToPartyId\": 100000091628908,\n    \"ShipToPartyName\": \"Charter Communications Operating, LLC\",\n    \"ShipToPartySiteId\": 100000112663623,\n    \"ShipToPartySiteName\": \"2323 BRYAN STREET,DALLAS, DALLAS, TX, 75201\",\n    \"PaymentMethod\": null,\n    \"PaymentMethodName\": null,\n    \"PONumber\": null,\n    \"WireNumber\": null,\n    \"PaymentTermsId\": 300000373737870,\n    \"PaymentTermsName\": \"Due 1st of Mon\",\n    \"PrePaymentNumber\": null,\n    \"TaxExemptionHandling\": \"S\",\n    \"TaxExemptionHandlingName\": \"Standard\",\n    \"ExemptCertificateNumber\": null,\n    \"ExemptReason\": null,\n    \"OutputTaxClassification\": null,\n    \"ProductFiscClassification\": null,\n    \"TaxError\": null,\n    \"CoverageScheduleId\": null,\n    \"RenewalType\": \"RENEW\",\n    \"BillingDateCode\": \"ORA_PERIOD_START\",\n    \"BillingDateName\": \"Period start\",\n    \"TotalContractValue\": null,\n    \"EstimatedTax\": null,\n    \"PricingError\": null,\n    \"PriceAsOf\": \"2023-05-22\",\n    \"PriceTransactionOn\": \"2023-05-22\",\n    \"InvoicedAmount\": null,\n    \"CreditedAmount\": null,\n    \"CanceledAmount\": null,\n    \"ClosedAmount\": null,\n    \"SourceSystem\": null,\n    \"SourceKey\": null,\n    \"SourceNumber\": null,\n    \"SourceLineKey\": null,\n    \"SourceLineNumber\": null,\n    \"MonthlyRecurringRevenue\": null,\n    \"Duration\": null,\n    \"Period\": null,\n    \"GenerateBillingSchedule\": \"Y\",\n    \"ExternalAssetKey\": null,\n    \"ExternalParentAssetKey\": null,\n    \"ExternalPriceListId\": null,\n    \"ExternalRootAssetKey\": null,\n    \"PriceListName\": null,\n    \"NextPricingDate\": null,\n    \"PricingTermsStartDate\": null,\n    \"PricingTermsPricingMethod\": null,\n    \"PricingTermsPeriod\": null,\n    \"PricingTermsDuration\": null,\n    \"PricingTermsAdjustmentPCT\": null,\n    \"CorpCurrencyCode\": \"USD\",\n    \"CurcyConvRateType\": \"Spot\",\n    \"AmendCreditMethod\": null,\n    \"AmendCreditMethodName\": null,\n    \"AmendDescription\": null,\n    \"AmendEffectiveDate\": null,\n    \"AmendReason\": null,\n    \"AmendReasonName\": null,\n    \"StatusMeaning\": \"Draft\",\n    \"EnablePricingTermsFlag\": false,\n    \"NextBillStartDate\": null,\n    \"TaxClassificationMeaning\": null,\n    \"CreatedBy\": \"SVC_SFDC_ERP_INTEGRATION\",\n    \"CreationDate\": \"2023-05-22T17:18:34+00:00\",\n    \"LastUpdatedBy\": \"SVC_SFDC_ERP_INTEGRATION\",\n    \"LastUpdateDate\": \"2023-05-22T17:18:34.292+00:00\",\n    \"LastUpdateLogin\": \"F91E1C6976346255E053FD50310A7414\",\n    \"SummarizedBillingFlag\": null,\n    \"InterfaceOffsetDays\": -20,\n    \"CoverageName\": null,\n    \"SuspendReason\": null,\n    \"SuspendedDate\": null,\n    \"SuspendCreditMethod\": null,\n    \"ResumeDate\": null,\n    \"ResumeDuration\": null,\n    \"ResumePeriod\": null,\n    \"AutoExtendFlag\": null,\n    \"ChurnProbability\": null,\n    \"EarlyTerminationPenalty\": null,\n    \"EarlyTerminationFee\": null,\n    \"GracePeriod\": null,\n    \"PenaltyValue\": null,\n    \"PenaltyChargeName\": \"Penalty Fee\",\n    \"EarlyTerminationPenaltyName\": null,\n    \"ChurnPredictionTrend\": null,\n    \"PriceAdjustmentType\": null,\n    \"PriceAdjustmentBasis\": null,\n    \"PriceAdjustmentPercent\": null,\n    \"DisplaySequence\": null,\n    \"RelatedInventoryItemId\": null,\n    \"RelatedProductName\": null,\n    \"ProductChangeReason\": null,\n    \"ProductChangeSchedule\": null,\n    \"ProductChangeScheduleFrom\": null,\n    \"DropOneTimeChargeFlag\": null,\n    \"RelatedProductDescription\": null,\n    \"GenerateBillFullPeriodFlag\": null,\n    \"RenewalPaymentMethod\": null,\n    \"RenewalPoNumber\": null,\n    \"RenewalWireNumber\": null,\n    \"RenewalPaymentMethodName\": null,\n    \"CustomerTrxTypeSequenceId\": 300000373742358,\n    \"RepriceFlag\": null,\n    \"AlignBillingFrom\": null,\n    \"PendingActivationFlag\": null,\n    \"RatePlanDocumentId\": null,\n    \"RatePlanId\": null,\n    \"RatePlanNumber\": null,\n    \"RatePlanName\": null,\n    \"BillToSiteNumber\": null,\n    \"ShipToPartyNumber\": null,\n    \"ShipToPartySiteNumber\": null,\n    \"SalesOrderId\": null,\n    \"SalesOrderNumber\": null,\n    \"OrderFulfillLineId\": null,\n    \"OrderFulfillLineNumber\": null,\n    \"EnableUpfrontBillingFlag\": null,\n    \"BillToContactId\": null,\n    \"ShipToAccountId\": null,\n    \"ShipToContactId\": null,\n    \"WarehouseId\": null,\n    \"BillToPartyName\": \"Charter Communications Operating, LLC\",\n    \"BillToContactName\": null,\n    \"ShipToAccountNumber\": null,\n    \"ShipToContactName\": null,\n    \"WareHouseName\": null,\n    \"ShipToAccountDescription\": null,\n    \"BillToContactNumber\": null,\n    \"ShipToContactNumber\": null,\n    \"ShipToContactPartyId\": null,\n    \"UsageInvoiceLayoutTemplate\": null,\n    \"EnableProrateByDay\": null,\n    \"RequestedRatePlanId\": null,\n    \"RequestedRatePlanNumber\": null,\n    \"RenewalDuration\": null,\n    \"RenewalDurationPeriod\": null,\n    \"RenewalDurationPeriodName\": null,\n    \"OverrideCreditAmount\": null,\n    \"CalculatedCreditAmount\": null,\n    \"DefaultRevenueAction\": null,\n    \"PrimaryPartyId\": 100000091628908,\n    \"CloseDescription\": null,\n    \"CancelDescription\": null,\n    \"RequestedEntitlementPlanId\": null,\n    \"RequestedEntitlementPlanNumber\": null,\n    \"EntitlementPlanId\": null,\n    \"EntitlementPlanNumber\": null,\n    \"EntitlementType\": null,\n    \"BalanceRegisterId\": null,\n    \"BalanceRegisterNumber\": null,\n    \"RenewPerpetuallyFlag\": null,\n    \"AssetIdentificationNumber_c\": \"21345\",\n    \"BilltoContactName_Id_c\": null,\n    \"BilltoContactName_c\": null,\n    \"BilltoContactRoleId_c\": null,\n    \"CopyPricing_c\": null,\n    \"CaseNumberProjectID_c\": \"00825441\",\n    \"CustomerTerminationNotificationPeriod_c\": null,\n    \"EmailNotificationSentDate_c\": null,\n    \"FulfillmentDate_c\": \"2023-05-22\",\n    \"LegacyProductID_c\": null,\n    \"PurchaseOrderNumber_c\": \"1234\",\n    \"ServiceOrderNumber_c\": null,\n    \"SubCaseNumberTaskID_c\": null,\n    \"IncludeForOAReporting_c\": false,\n    \"InstallBaseAssetID_c\": \"\",\n    \"PrintDescription_c\": null,\n    \"InvoiceGroupingCode_c\": \"\",\n    \"ProductCloseInfo_c\": null,\n    \"FutureProductCloseDate_c\": null,\n    \"TerminationQuote_c\": null,\n    \"LegacyKWValue_c\": null,\n    \"InvoiceGroupingCodeOIC_c\": null,\n    \"InvoiceGroupingAdditionalData_c\": null,\n    \"CageID_c\": null,\n    \"CabinetID_c\": null,\n    \"QuotedUOM_c\": null,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP\",\n            \"name\": \"subscriptionProducts\",\n            \"kind\": \"item\",\n            \"properties\": {\n                \"changeIndicator\": \"ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178\"\n            }\n        },\n        {\n            \"rel\": \"canonical\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP\",\n            \"name\": \"subscriptionProducts\",\n            \"kind\": \"item\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/ShipToAccountVA\",\n            \"name\": \"ShipToAccountVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/TimeCodeUnitsVA\",\n            \"name\": \"TimeCodeUnitsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/RatePlanVA\",\n            \"name\": \"RatePlanVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/ProductCloseReasonVA\",\n            \"name\": \"ProductCloseReasonVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/TimeUnitOfMeasureVA\",\n            \"name\": \"TimeUnitOfMeasureVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/WareHouseVA\",\n            \"name\": \"WareHouseVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/RelatedItemNameVA\",\n            \"name\": \"RelatedItemNameVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/AccountingRuleVA\",\n            \"name\": \"AccountingRuleVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/BillToAccountVA\",\n            \"name\": \"BillToAccountVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/ShipToExternalContactsVA\",\n            \"name\": \"ShipToExternalContactsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/TaxExemptionControlVA\",\n            \"name\": \"TaxExemptionControlVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/EarlyTerminationPenaltyVA\",\n            \"name\": \"EarlyTerminationPenaltyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/BillingDayLOVVO\",\n            \"name\": \"BillingDayLOVVO\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/PriceAdjustmentBasisVA\",\n            \"name\": \"PriceAdjustmentBasisVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/PricingMethodVA\",\n            \"name\": \"PricingMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/LOVVA_For_IncludeForOAReporting_c\",\n            \"name\": \"LOVVA_For_IncludeForOAReporting_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/SubscriptionCoverageHeaderVA\",\n            \"name\": \"SubscriptionCoverageHeaderVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/InvoiceRuleVA\",\n            \"name\": \"InvoiceRuleVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/TransactionTypeVA\",\n            \"name\": \"TransactionTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/PriceAdjustmentTypeVA\",\n            \"name\": \"PriceAdjustmentTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/PrimaryPartyVA\",\n            \"name\": \"PrimaryPartyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/FK_LOVVA_For_BilltoContactName_c\",\n            \"name\": \"FK_LOVVA_For_BilltoContactName_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/RenewalTypeVA\",\n            \"name\": \"RenewalTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/LOVVA_For_BilltoContactName_c\",\n            \"name\": \"LOVVA_For_BilltoContactName_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/PaymentTermsLOVVA\",\n            \"name\": \"PaymentTermsLOVVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/EntitlementTypeVA\",\n            \"name\": \"EntitlementTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/ShipToPartySiteVA\",\n            \"name\": \"ShipToPartySiteVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/BillingDateCodeVA\",\n            \"name\": \"BillingDateCodeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/BillToContactsVA\",\n            \"name\": \"BillToContactsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/AmendReasonVA\",\n            \"name\": \"AmendReasonVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/LOVVA_For_CopyPricing_c\",\n            \"name\": \"LOVVA_For_CopyPricing_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/ChangeReasonVA\",\n            \"name\": \"ChangeReasonVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/PaymentMethodVA\",\n            \"name\": \"PaymentMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/SalesProductTypeLookupVA\",\n            \"name\": \"SalesProductTypeLookupVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/ProductCloseCreditMethodVA\",\n            \"name\": \"ProductCloseCreditMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/UsageInvoiceLayoutTemplateVA\",\n            \"name\": \"UsageInvoiceLayoutTemplateVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/ShipToPartyVA\",\n            \"name\": \"ShipToPartyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/PaymentSetIdVA\",\n            \"name\": \"PaymentSetIdVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/PeriodVA\",\n            \"name\": \"PeriodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/ItemVA\",\n            \"name\": \"ItemVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/lov/AmendCreditMethodVA\",\n            \"name\": \"AmendCreditMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/associatedAsset\",\n            \"name\": \"associatedAsset\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/billLines\",\n            \"name\": \"billLines\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges\",\n            \"name\": \"charges\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/coveredLevels\",\n            \"name\": \"coveredLevels\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/creditCards\",\n            \"name\": \"creditCards\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/flexFields\",\n            \"name\": \"flexFields\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/negotiatedEntitlementPlanDetails\",\n            \"name\": \"negotiatedEntitlementPlanDetails\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/relationships\",\n            \"name\": \"relationships\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/salesCredits\",\n            \"name\": \"salesCredits\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/serviceResources\",\n            \"name\": \"serviceResources\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/action/putOnHold\",\n            \"name\": \"putOnHold\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/action/removeHold\",\n            \"name\": \"removeHold\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/action/undoClose\",\n            \"name\": \"undoClose\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/action/cancel\",\n            \"name\": \"cancel\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/action/suspend\",\n            \"name\": \"suspend\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/action/resume\",\n            \"name\": \"resume\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/action/close\",\n            \"name\": \"close\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"enclosure\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/enclosure/RatePlanDocument\",\n            \"name\": \"RatePlanDocument\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"enclosure\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/enclosure/ProductAttribute_c\",\n            \"name\": \"ProductAttribute_c\",\n            \"kind\": \"other\"\n        }\n    ]\n}"
+				},
+				{
+					"id": "6df01346-c2f9-4a87-93fb-9bed2f93126b",
+					"name": "Create a subscription product ver 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SubscriptionNumber\": \"150-C143350_XC\",\r\n    \"LineNumber\": \"2\",\r\n    \"CaseNumberProjectID_c\":\"00825449\",//Case Number \r\n    \"PurchaseOrderNumber_c\":\"21345\",//parent case PO number\r\n    \"SubscriptionProductPuid\": \"150-C143350_XC_2_INCPPT\", //process generate \"subscription number\" + \"line number\" + \"oracle product name\" + \"medium/description\"\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    //\"SalesProductType\": \"SUBSCRIPTION\",\r\n    //\"Description\": \"QP Item for SPT Subscription\",\r\n    //\"InventoryItemId\": 300100012368232,\r\n    //\"ItemUnitOfMeasure\": \"Ea\",\r\n    \"ProductName\": \"INCPPT\",\r\n    //\"Description\": \"One Pack - Fiber\",\r\n    //\"ProductAttribute_c\":\"One Pack - Fiber\", //issue \"Unable to parse the provided payload\"\r\n    \"Quantity\": 1,\r\n    \"StartDate\": \"2023-05-24\", //bill date\r\n    //\"EndDate\": \"2019-12-25\"\r\n    \"Status\": \"ORA_DRAFT\",\r\n    \"Currency\": \"USD\",\r\n    \"BillingFrequency\":\"Mon\",\r\n    \"GenerateBillingSchedule\": \"Y\",\r\n    //\"CaseNumberProjectID_c\": \"\",\r\n    \"AssetIdentificationNumber_c\": \"21345\",\r\n    //\"PurchaseOrderNumber_c\": \"\",\r\n    \"InstallBaseAssetID_c\": \"\", //need to create Install base asset first\r\n    \"EnablePricingTermsFlag\": \"N\",\r\n    \"FulfillmentDate_c\": \"2023-05-24\" //bill date\r\n    //ProductAttribute_c */\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.oracle.adf.resourceitem+json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3239"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Location",
+							"value": "https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT"
+						},
+						{
+							"key": "X-ORACLE-DMS-ECID",
+							"value": "005z5t0xOzGBHBVpq0O5yY00071k0003G3"
+						},
+						{
+							"key": "Link",
+							"value": "<https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT>;rel=\"self\";kind=\"item\";name=\"subscriptionProducts\""
+						},
+						{
+							"key": "X-ORACLE-DMS-RID",
+							"value": "0:3"
+						},
+						{
+							"key": "ETag",
+							"value": "\"ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178\""
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "REST-Framework-Version",
+							"value": "1"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 May 2023 15:43:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "AKGRN",
+							"value": "0.14b72d17.1684856629.1cc5bf19"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"SubscriptionProductId\": 300001316808524,\n    \"SubscriptionId\": 300000410827334,\n    \"LineNumber\": \"2\",\n    \"SubscriptionProductPuid\": \"150-C143350_XC_2_INCPPT\",\n    \"DefinitionOrganizationId\": 300000330053639,\n    \"SubscriptionNumber\": \"150-C143350_XC\",\n    \"SalesProductType\": \"SUBSCRIPTION\",\n    \"Description\": \"Premium Port\",\n    \"InventoryItemId\": 100000092407481,\n    \"ItemUnitOfMeasure\": \"EA\",\n    \"ProductName\": \"INCPPT\",\n    \"Quantity\": 1,\n    \"StartDate\": \"2023-05-24\",\n    \"EndDate\": null,\n    \"CloseReason\": null,\n    \"CloseCreditMethod\": null,\n    \"CancelReason\": null,\n    \"ClosedDate\": null,\n    \"CanceledDate\": null,\n    \"RenewedDate\": null,\n    \"PriceListId\": null,\n    \"UnitPrice\": null,\n    \"Status\": \"ORA_DRAFT\",\n    \"Currency\": \"USD\",\n    \"InvoicingRuleId\": -2,\n    \"InvoicingRuleName\": \"Advance Invoice\",\n    \"BillOnDay\": null,\n    \"BillingOffsetDays\": null,\n    \"BillingFrequency\": \"Mon\",\n    \"BillingFrequencyName\": \"Month\",\n    \"AccountingRuleId\": 1,\n    \"AccountingRuleName\": \"Immediate\",\n    \"TransactionTypeName\": \"Subscription INV\",\n    \"InvoiceText\": \"[$Product Name]: [$Charge Name] [$Bill from Date]-[$Bill to Date]\",\n    \"BillToPartyId\": 100000091628908,\n    \"BillToPartyNumber\": \"189594\",\n    \"BillToAccountId\": 100000093310744,\n    \"BillToAccountNumber\": \"240266\",\n    \"BillToAccountDescription\": \"Charter Communications Operating, LLC\",\n    \"BillToSiteUseId\": 100000093315815,\n    \"BillToAddress\": \"12150 MONUMENT DRIVE, STE. 700,FAIRFAX, FAIRFAX (IND CITY), VA, 22033\",\n    \"ShipToPartyId\": 100000091628908,\n    \"ShipToPartyName\": \"Charter Communications Operating, LLC\",\n    \"ShipToPartySiteId\": 100000112663623,\n    \"ShipToPartySiteName\": \"2323 BRYAN STREET,DALLAS, DALLAS, TX, 75201\",\n    \"PaymentMethod\": null,\n    \"PaymentMethodName\": null,\n    \"PONumber\": null,\n    \"WireNumber\": null,\n    \"PaymentTermsId\": 300000373737866,\n    \"PaymentTermsName\": \"Net 45\",\n    \"PrePaymentNumber\": null,\n    \"TaxExemptionHandling\": \"S\",\n    \"TaxExemptionHandlingName\": \"Standard\",\n    \"ExemptCertificateNumber\": null,\n    \"ExemptReason\": null,\n    \"OutputTaxClassification\": null,\n    \"ProductFiscClassification\": null,\n    \"TaxError\": null,\n    \"CoverageScheduleId\": null,\n    \"RenewalType\": \"RENEW\",\n    \"BillingDateCode\": \"ORA_PERIOD_START\",\n    \"BillingDateName\": \"Period start\",\n    \"TotalContractValue\": null,\n    \"EstimatedTax\": null,\n    \"PricingError\": null,\n    \"PriceAsOf\": \"2023-05-23\",\n    \"PriceTransactionOn\": \"2023-05-23\",\n    \"InvoicedAmount\": null,\n    \"CreditedAmount\": null,\n    \"CanceledAmount\": null,\n    \"ClosedAmount\": null,\n    \"SourceSystem\": null,\n    \"SourceKey\": null,\n    \"SourceNumber\": null,\n    \"SourceLineKey\": null,\n    \"SourceLineNumber\": null,\n    \"MonthlyRecurringRevenue\": null,\n    \"Duration\": null,\n    \"Period\": null,\n    \"GenerateBillingSchedule\": \"Y\",\n    \"ExternalAssetKey\": null,\n    \"ExternalParentAssetKey\": null,\n    \"ExternalPriceListId\": null,\n    \"ExternalRootAssetKey\": null,\n    \"PriceListName\": null,\n    \"NextPricingDate\": null,\n    \"PricingTermsStartDate\": null,\n    \"PricingTermsPricingMethod\": null,\n    \"PricingTermsPeriod\": null,\n    \"PricingTermsDuration\": null,\n    \"PricingTermsAdjustmentPCT\": null,\n    \"CorpCurrencyCode\": \"USD\",\n    \"CurcyConvRateType\": \"Spot\",\n    \"AmendCreditMethod\": null,\n    \"AmendCreditMethodName\": null,\n    \"AmendDescription\": null,\n    \"AmendEffectiveDate\": null,\n    \"AmendReason\": null,\n    \"AmendReasonName\": null,\n    \"StatusMeaning\": \"Draft\",\n    \"EnablePricingTermsFlag\": false,\n    \"NextBillStartDate\": null,\n    \"TaxClassificationMeaning\": null,\n    \"CreatedBy\": \"SVC_SFDC_ERP_INTEGRATION\",\n    \"CreationDate\": \"2023-05-23T15:43:50+00:00\",\n    \"LastUpdatedBy\": \"SVC_SFDC_ERP_INTEGRATION\",\n    \"LastUpdateDate\": \"2023-05-23T15:43:50.327+00:00\",\n    \"LastUpdateLogin\": \"F91E1B5208296264E053FD50310A4D46\",\n    \"SummarizedBillingFlag\": null,\n    \"InterfaceOffsetDays\": -20,\n    \"CoverageName\": null,\n    \"SuspendReason\": null,\n    \"SuspendedDate\": null,\n    \"SuspendCreditMethod\": null,\n    \"ResumeDate\": null,\n    \"ResumeDuration\": null,\n    \"ResumePeriod\": null,\n    \"AutoExtendFlag\": null,\n    \"ChurnProbability\": null,\n    \"EarlyTerminationPenalty\": null,\n    \"EarlyTerminationFee\": null,\n    \"GracePeriod\": null,\n    \"PenaltyValue\": null,\n    \"PenaltyChargeName\": \"Penalty Fee\",\n    \"EarlyTerminationPenaltyName\": null,\n    \"ChurnPredictionTrend\": null,\n    \"PriceAdjustmentType\": null,\n    \"PriceAdjustmentBasis\": null,\n    \"PriceAdjustmentPercent\": null,\n    \"DisplaySequence\": null,\n    \"RelatedInventoryItemId\": null,\n    \"RelatedProductName\": null,\n    \"ProductChangeReason\": null,\n    \"ProductChangeSchedule\": null,\n    \"ProductChangeScheduleFrom\": null,\n    \"DropOneTimeChargeFlag\": null,\n    \"RelatedProductDescription\": null,\n    \"GenerateBillFullPeriodFlag\": null,\n    \"RenewalPaymentMethod\": null,\n    \"RenewalPoNumber\": null,\n    \"RenewalWireNumber\": null,\n    \"RenewalPaymentMethodName\": null,\n    \"CustomerTrxTypeSequenceId\": 300000373742358,\n    \"RepriceFlag\": null,\n    \"AlignBillingFrom\": null,\n    \"PendingActivationFlag\": null,\n    \"RatePlanDocumentId\": null,\n    \"RatePlanId\": null,\n    \"RatePlanNumber\": null,\n    \"RatePlanName\": null,\n    \"BillToSiteNumber\": null,\n    \"ShipToPartyNumber\": null,\n    \"ShipToPartySiteNumber\": null,\n    \"SalesOrderId\": null,\n    \"SalesOrderNumber\": null,\n    \"OrderFulfillLineId\": null,\n    \"OrderFulfillLineNumber\": null,\n    \"EnableUpfrontBillingFlag\": null,\n    \"BillToContactId\": null,\n    \"ShipToAccountId\": null,\n    \"ShipToContactId\": null,\n    \"WarehouseId\": null,\n    \"BillToPartyName\": \"Charter Communications Operating, LLC\",\n    \"BillToContactName\": null,\n    \"ShipToAccountNumber\": null,\n    \"ShipToContactName\": null,\n    \"WareHouseName\": null,\n    \"ShipToAccountDescription\": null,\n    \"BillToContactNumber\": null,\n    \"ShipToContactNumber\": null,\n    \"ShipToContactPartyId\": null,\n    \"UsageInvoiceLayoutTemplate\": null,\n    \"EnableProrateByDay\": null,\n    \"RequestedRatePlanId\": null,\n    \"RequestedRatePlanNumber\": null,\n    \"RenewalDuration\": null,\n    \"RenewalDurationPeriod\": null,\n    \"RenewalDurationPeriodName\": null,\n    \"OverrideCreditAmount\": null,\n    \"CalculatedCreditAmount\": null,\n    \"DefaultRevenueAction\": null,\n    \"PrimaryPartyId\": 100000091628908,\n    \"CloseDescription\": null,\n    \"CancelDescription\": null,\n    \"RequestedEntitlementPlanId\": null,\n    \"RequestedEntitlementPlanNumber\": null,\n    \"EntitlementPlanId\": null,\n    \"EntitlementPlanNumber\": null,\n    \"EntitlementType\": null,\n    \"BalanceRegisterId\": null,\n    \"BalanceRegisterNumber\": null,\n    \"RenewPerpetuallyFlag\": null,\n    \"AssetIdentificationNumber_c\": \"21345\",\n    \"BilltoContactName_Id_c\": null,\n    \"BilltoContactName_c\": null,\n    \"BilltoContactRoleId_c\": null,\n    \"CopyPricing_c\": null,\n    \"CaseNumberProjectID_c\": \"00825449\",\n    \"CustomerTerminationNotificationPeriod_c\": null,\n    \"EmailNotificationSentDate_c\": null,\n    \"FulfillmentDate_c\": \"2023-05-24\",\n    \"LegacyProductID_c\": null,\n    \"PurchaseOrderNumber_c\": \"21345\",\n    \"ServiceOrderNumber_c\": null,\n    \"SubCaseNumberTaskID_c\": null,\n    \"IncludeForOAReporting_c\": false,\n    \"InstallBaseAssetID_c\": \"\",\n    \"PrintDescription_c\": null,\n    \"InvoiceGroupingCode_c\": \"\",\n    \"ProductCloseInfo_c\": null,\n    \"FutureProductCloseDate_c\": null,\n    \"TerminationQuote_c\": null,\n    \"LegacyKWValue_c\": null,\n    \"InvoiceGroupingCodeOIC_c\": null,\n    \"InvoiceGroupingAdditionalData_c\": null,\n    \"CageID_c\": null,\n    \"CabinetID_c\": null,\n    \"QuotedUOM_c\": null,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT\",\n            \"name\": \"subscriptionProducts\",\n            \"kind\": \"item\",\n            \"properties\": {\n                \"changeIndicator\": \"ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178\"\n            }\n        },\n        {\n            \"rel\": \"canonical\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT\",\n            \"name\": \"subscriptionProducts\",\n            \"kind\": \"item\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/ShipToAccountVA\",\n            \"name\": \"ShipToAccountVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/TimeCodeUnitsVA\",\n            \"name\": \"TimeCodeUnitsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/RatePlanVA\",\n            \"name\": \"RatePlanVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/ProductCloseReasonVA\",\n            \"name\": \"ProductCloseReasonVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/TimeUnitOfMeasureVA\",\n            \"name\": \"TimeUnitOfMeasureVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/WareHouseVA\",\n            \"name\": \"WareHouseVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/RelatedItemNameVA\",\n            \"name\": \"RelatedItemNameVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/AccountingRuleVA\",\n            \"name\": \"AccountingRuleVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/BillToAccountVA\",\n            \"name\": \"BillToAccountVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/ShipToExternalContactsVA\",\n            \"name\": \"ShipToExternalContactsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/TaxExemptionControlVA\",\n            \"name\": \"TaxExemptionControlVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/EarlyTerminationPenaltyVA\",\n            \"name\": \"EarlyTerminationPenaltyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/BillingDayLOVVO\",\n            \"name\": \"BillingDayLOVVO\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/PriceAdjustmentBasisVA\",\n            \"name\": \"PriceAdjustmentBasisVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/PricingMethodVA\",\n            \"name\": \"PricingMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/LOVVA_For_IncludeForOAReporting_c\",\n            \"name\": \"LOVVA_For_IncludeForOAReporting_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/SubscriptionCoverageHeaderVA\",\n            \"name\": \"SubscriptionCoverageHeaderVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/InvoiceRuleVA\",\n            \"name\": \"InvoiceRuleVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/TransactionTypeVA\",\n            \"name\": \"TransactionTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/PriceAdjustmentTypeVA\",\n            \"name\": \"PriceAdjustmentTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/PrimaryPartyVA\",\n            \"name\": \"PrimaryPartyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/FK_LOVVA_For_BilltoContactName_c\",\n            \"name\": \"FK_LOVVA_For_BilltoContactName_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/RenewalTypeVA\",\n            \"name\": \"RenewalTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/LOVVA_For_BilltoContactName_c\",\n            \"name\": \"LOVVA_For_BilltoContactName_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/PaymentTermsLOVVA\",\n            \"name\": \"PaymentTermsLOVVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/EntitlementTypeVA\",\n            \"name\": \"EntitlementTypeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/ShipToPartySiteVA\",\n            \"name\": \"ShipToPartySiteVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/BillingDateCodeVA\",\n            \"name\": \"BillingDateCodeVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/BillToContactsVA\",\n            \"name\": \"BillToContactsVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/AmendReasonVA\",\n            \"name\": \"AmendReasonVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/LOVVA_For_CopyPricing_c\",\n            \"name\": \"LOVVA_For_CopyPricing_c\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/ChangeReasonVA\",\n            \"name\": \"ChangeReasonVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/PaymentMethodVA\",\n            \"name\": \"PaymentMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/SalesProductTypeLookupVA\",\n            \"name\": \"SalesProductTypeLookupVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/ProductCloseCreditMethodVA\",\n            \"name\": \"ProductCloseCreditMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/UsageInvoiceLayoutTemplateVA\",\n            \"name\": \"UsageInvoiceLayoutTemplateVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/ShipToPartyVA\",\n            \"name\": \"ShipToPartyVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/PaymentSetIdVA\",\n            \"name\": \"PaymentSetIdVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/PeriodVA\",\n            \"name\": \"PeriodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/ItemVA\",\n            \"name\": \"ItemVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/lov/AmendCreditMethodVA\",\n            \"name\": \"AmendCreditMethodVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/associatedAsset\",\n            \"name\": \"associatedAsset\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/billLines\",\n            \"name\": \"billLines\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/charges\",\n            \"name\": \"charges\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/coveredLevels\",\n            \"name\": \"coveredLevels\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/creditCards\",\n            \"name\": \"creditCards\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/flexFields\",\n            \"name\": \"flexFields\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/negotiatedEntitlementPlanDetails\",\n            \"name\": \"negotiatedEntitlementPlanDetails\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/relationships\",\n            \"name\": \"relationships\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/salesCredits\",\n            \"name\": \"salesCredits\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/child/serviceResources\",\n            \"name\": \"serviceResources\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/action/putOnHold\",\n            \"name\": \"putOnHold\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/action/removeHold\",\n            \"name\": \"removeHold\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/action/undoClose\",\n            \"name\": \"undoClose\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/action/cancel\",\n            \"name\": \"cancel\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/action/suspend\",\n            \"name\": \"suspend\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/action/resume\",\n            \"name\": \"resume\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"action\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/action/close\",\n            \"name\": \"close\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"enclosure\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/enclosure/RatePlanDocument\",\n            \"name\": \"RatePlanDocument\",\n            \"kind\": \"other\"\n        },\n        {\n            \"rel\": \"enclosure\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_2_INCPPT/enclosure/ProductAttribute_c\",\n            \"name\": \"ProductAttribute_c\",\n            \"kind\": \"other\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create a product charge",
+			"id": "cc9d5c50-f27f-4d81-bfba-99b781fdfa50",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    //\"BillLineId\": null,\r\n    \"ChargeDefinition\": \"MRC\",\r\n    \"ChargePuid\": \"000-C00745_XC_Test_05222023_v3-1-MRC-1\",\r\n    \"PricePeriodicity\": \"Mon\",\r\n    \"PriceType\": \"ORA_RECURRING\", //can be hard coded based on charge name from SFDC billing records\r\n    \"ChargeName\": \"MRC\",\r\n    \"UnitListPrice\": 350 ,\r\n    //\"TieredFlag\": true\r\n    \"ExternalParentKey\": \"INCOP\",\r\n    \"ExternalKey\":\"MRC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges"
+			},
+			"response": [
+				{
+					"id": "3b9a191b-2004-41d6-b88a-ff9cccf303e9",
+					"name": "Create a product charge",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    //\"BillLineId\": null,\r\n    \"ChargeDefinition\": \"MRC\",\r\n    \"ChargePuid\": \"000-C00745_XC_Test_05222023_v3-1-MRC-1\",\r\n    \"PricePeriodicity\": \"Mon\",\r\n    \"PriceType\": \"ORA_RECURRING\", //can be hard coded based on charge name from SFDC billing records\r\n    \"ChargeName\": \"MRC\",\r\n    \"UnitListPrice\": 350 ,\r\n    //\"TieredFlag\": true\r\n    \"ExternalParentKey\": \"INCOP\",\r\n    \"ExternalKey\":\"MRC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.oracle.adf.resourceitem+json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1151"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Location",
+							"value": "https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1"
+						},
+						{
+							"key": "X-ORACLE-DMS-ECID",
+							"value": "005z4hxU9qRBHBVpq0O5yY0002UF0003G_"
+						},
+						{
+							"key": "Link",
+							"value": "<https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1>;rel=\"self\";kind=\"item\";name=\"charges\""
+						},
+						{
+							"key": "X-ORACLE-DMS-RID",
+							"value": "0:5"
+						},
+						{
+							"key": "ETag",
+							"value": "\"ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178\""
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "REST-Framework-Version",
+							"value": "1"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 22 May 2023 17:20:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "AKGRN",
+							"value": "0.36b72d17.1684776040.1d73b587"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"BillLineId\": null,\n    \"ChargeDefinition\": \"MRC\",\n    \"ChargeId\": 300001316782403,\n    \"ChargePuid\": \"000-C00745_XC_Test_05222023_v3-1-MRC-1\",\n    \"CoveredLevelId\": null,\n    \"PrePaymentNumber\": null,\n    \"PricePeriodicity\": \"Mon\",\n    \"PriceType\": \"ORA_RECURRING\",\n    \"RollupFlag\": false,\n    \"SequenceNumber\": null,\n    \"SubscriptionId\": 300001316782317,\n    \"SubscriptionProductId\": 300001316782402,\n    \"ChargeName\": \"MRC\",\n    \"ExternalKey\": \"MRC\",\n    \"ExternalParentKey\": \"INCOP\",\n    \"UnitListPrice\": 350,\n    \"Allowance\": null,\n    \"BlockSize\": null,\n    \"TieredFlag\": null,\n    \"TierType\": null,\n    \"UsagePriceLockFlag\": null,\n    \"PricePeriodicityName\": \"Month\",\n    \"ChargeDefinitionName\": null,\n    \"CreatedBy\": \"SVC_SFDC_ERP_INTEGRATION\",\n    \"CreationDate\": \"2023-05-22T17:20:41+00:00\",\n    \"LastUpdateDate\": \"2023-05-22T17:20:41.123+00:00\",\n    \"LastUpdateLogin\": \"F91E1C69763E6255E053FD50310A7414\",\n    \"LastUpdatedBy\": \"SVC_SFDC_ERP_INTEGRATION\",\n    \"MeterDefinitionId\": null,\n    \"MeterId\": null,\n    \"InitialMeterReadingId\": null,\n    \"AggregationMethod\": null,\n    \"AssetMeterYn\": null,\n    \"TrueUpPeriod\": null,\n    \"TrueUpPeriodName\": null,\n    \"EstimatedAmount\": null,\n    \"EstimatedMethodName\": \"None\",\n    \"EstimatedQuantity\": null,\n    \"EstimationMethod\": \"ORA_OSS_USAGE_EST_NONE\",\n    \"MinimumAmount\": null,\n    \"MinimumQuantity\": null,\n    \"InvoicingRuleId\": null,\n    \"InvoicingRuleName\": null,\n    \"PeriodicBillingFlag\": null,\n    \"PeriodicRevenueFlag\": null,\n    \"QuotedTcv\": null,\n    \"EnableProration\": null,\n    \"MilestoneTemplateId\": null,\n    \"MilestoneBillingFlag\": false,\n    \"MilestoneRevenueFlag\": false,\n    \"MilestoneTemplateName\": null,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1\",\n            \"name\": \"charges\",\n            \"kind\": \"item\",\n            \"properties\": {\n                \"changeIndicator\": \"ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178\"\n            }\n        },\n        {\n            \"rel\": \"canonical\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1\",\n            \"name\": \"charges\",\n            \"kind\": \"item\"\n        },\n        {\n            \"rel\": \"parent\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP\",\n            \"name\": \"subscriptionProducts\",\n            \"kind\": \"item\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/lov/MilestoneTemplatesVA\",\n            \"name\": \"MilestoneTemplatesVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/lov/TierTypePVO\",\n            \"name\": \"TierTypePVO\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/lov/InvoiceRuleVA\",\n            \"name\": \"InvoiceRuleVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/lov/EstimationMethodNameVA\",\n            \"name\": \"EstimationMethodNameVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/lov/PaymentSetIdVA\",\n            \"name\": \"PaymentSetIdVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"lov\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/lov/TrueUpNameVA\",\n            \"name\": \"TrueUpNameVA\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/child/adjustments\",\n            \"name\": \"adjustments\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/child/chargeMilestoneEvents\",\n            \"name\": \"chargeMilestoneEvents\",\n            \"kind\": \"collection\"\n        },\n        {\n            \"rel\": \"child\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptionProducts/150-C143350_XC_Test_05222023_v1-1-INCOP/child/charges/000-C00745_XC_Test_05222023_v3-1-MRC-1/child/chargeTiers\",\n            \"name\": \"chargeTiers\",\n            \"kind\": \"collection\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "{{siteURL}}/crmRestApi/resources/latest/subscriptions",
+			"id": "c7a5ad2d-d5a9-4d1e-ad3a-e0199505bc4d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SubscriptionNumber\": \"150-C143350_XC_Test_05222023_v1\", //process generate - fomular \"customer location\" + \"_\" +\"XC\"\r\n    \"BusinessUnitId\": 300000005793193,\r\n    \"LegalEntityId\": 300000356116983,\r\n    \"SubscriptionProfileId\": 300000376076235,\r\n    \"PrimaryPartyId\": 100000091628908,\r\n    \"Currency\": \"USD\",\r\n    \"StartDate\": \"2023-05-22\",\r\n    \"BillToAccountId\": 100000093310744,\r\n    \"BillToSiteUseId\": 100000093315815,\r\n    \"ShipToParty\": 100000091628908,\r\n    \"ShipToPartySiteId\": 100000112663623,\r\n    \"SourceSystem\":\"PORTAL\"\r\n    \"PaymentTermsName\": \"Due 1st of Mon\"\r\n    \"Location_c\":\"DFW010\",\r\n    \"CustomerLocation_c\":\"150-C143350\", \r\n    \"ProductCategory_c\":\"CROSS_CONNECT\", //static\r\n    \"GenerateBillingSchedule\": \"Y\" //static\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{serviceAccountPassword}}",
+			"username": "{{serviceAccount}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "24eb84d7-08c5-4a64-87a8-df83be206056",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6514b87f-1670-4b20-a95f-2a11e257935e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
