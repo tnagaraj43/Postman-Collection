@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "129a2230-6bc6-49b4-9fa5-f0d31ccae1c3",
+		"name": "Add One Pack to Deployment V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Configure Deployment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"id": "95c0c30d-69b0-4ec5-b19e-534cb1654f9e"
+					}
+				}
+			],
+			"id": "aedb1085-3210-413f-b425-03be7d536fee",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cacheInstanceId\": \"-1\",\r\n    \"assetKey\" : \"abo_eee3af42-906a-4f2b-a0b0-00ceefbd2846\",\r\n    \"bsId\": 86832628,\r\n    \"documentId\": {{documentId}},\r\n    \r\n    \"fromPunchin\": false,\r\n\r\n    \"criteria\": {\r\n            \"state\": true\r\n    }\r\n}\r\n"
+				},
+				"url": "{{siteURL}}/configdigitalRealty.products.deployment/actions/_configure"
+			},
+			"response": []
+		},
+		{
+			"name": "Add One Pack at Deployment Level",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var docNumber = pm.environment.get(\"docNumber\");",
+							"var msg = \"docNumber:\" + docNumber + \":ReconfigureModelUpdate API took:\"+ pm.response.responseTime;",
+							"console.log(msg);",
+							"",
+							"",
+							"var globalLog = pm.environment.get(\"globalLog\");",
+							"globalLog = globalLog + \";\" + msg; ",
+							"pm.environment.set(\"globalLog\", globalLog);",
+							"",
+							"pm.environment.set(\"reconfigModel\", pm.collectionVariables.get(\"reconfigModel\") + pm.response.responseTime);"
+						],
+						"type": "text/javascript",
+						"id": "31087e08-1ade-4eb4-936d-7bf2ffb57ce9"
+					}
+				}
+			],
+			"id": "0d73b80a-ce72-4b32-85c3-5aab85c5b256",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cacheInstanceId\": \"c3EDonBpw0Kr6Gf83Y9HDd2084zToZVlBpXuVvIeT1Hd6nL2tcxktMU2l6nFoobN~86832628\",\r\n    \"configData\": {\r\n        \"tempproductCategory_d\": \"Interconnection\",\r\n        \"productCategory_d\": {\r\n            \"value\": \"Interconnection\",\r\n            \"displayValue\": \"Interconnection\"\r\n        },\r\n        \"productName_d\": {\r\n            \"value\": \"One Pack\",\r\n            \"displayValue\": \"One Pack\"\r\n        },\r\n        \"tempAutoAddonFlag\": true\r\n    }\r\n}\r\n"
+				},
+				"url": "{{siteURL}}/configdigitalRealty.products.deployment/actions/_update"
+			},
+			"response": []
+		},
+		{
+			"name": "ConfigureInSystem (Deployment)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"var docNumber = pm.environment.get(\"document_number\");",
+							"var msg = \"docNumber:\" + docNumber + \":ConfigureSolution API took:\"+ pm.response.responseTime;",
+							"var globalLog = pm.environment.get(\"globalLog\");",
+							"globalLog = globalLog + \";\" + msg; ",
+							"pm.environment.set(\"globalLog\", globalLog);",
+							"pm.environment.set(\"configSoln\", pm.response.responseTime);",
+							""
+						],
+						"type": "text/javascript",
+						"id": "e5b56ea5-9846-4d24-bf37-c2ed516f8b3f"
+					}
+				}
+			],
+			"id": "aa02a7ea-b8ec-4289-84d7-d9c3b4faaa83",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cacheInstanceId\": \"c3EDonBpw0Kr6Gf83Y9HDd2084zToZVlBpXuVvIeT1Hd6nL2tcxktMU2l6nFoobN~86832628\",\n    \"targetModelPath\": \"_root\",\n    \"criteria\":{\n        \"state\":true,\n        \"childDefs\": [{\n            \"name\":\"_setproductNameArraySet_pf\"\n        }]\n    }\n\n}"
+				},
+				"url": "{{siteURL}}/configdigitalRealty.products.deployment/actions/_configureInSystem"
+			},
+			"response": []
+		},
+		{
+			"name": "ConfigureInSystem (One Pack Model)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"var docNumber = pm.environment.get(\"document_number\");",
+							"var msg = \"docNumber:\" + docNumber + \":ConfigureSolution API took:\"+ pm.response.responseTime;",
+							"var globalLog = pm.environment.get(\"globalLog\");",
+							"globalLog = globalLog + \";\" + msg; ",
+							"pm.environment.set(\"globalLog\", globalLog);",
+							"pm.environment.set(\"configSoln\", pm.response.responseTime);",
+							""
+						],
+						"type": "text/javascript",
+						"id": "f87ac912-f0ec-4fb2-b0cf-5540d337a20c"
+					}
+				}
+			],
+			"id": "a6a8bed8-3713-4aea-95df-ea2abaa3a0d6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cacheInstanceId\": \"c3EDonBpw0Kr6Gf83Y9HDd2084zToZVlBpXuVvIeT1Hd6nL2tcxktMU2l6nFoobN~86832628\",\n    \"targetModelPath\": \"_root:::digitalRealty:products:onePack::0::1\",\n    \"criteria\":{\n        \"state\":true\n    }\n\n}"
+				},
+				"url": "{{siteURL}}/configdigitalRealty.products.onePack/actions/_configureInSystem"
+			},
+			"response": []
+		},
+		{
+			"name": "Update (One Pack Model)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var docNumber = pm.environment.get(\"docNumber\");",
+							"var msg = \"docNumber:\" + docNumber + \":ReconfigureModelUpdate API took:\"+ pm.response.responseTime;",
+							"console.log(msg);",
+							"",
+							"",
+							"var globalLog = pm.environment.get(\"globalLog\");",
+							"globalLog = globalLog + \";\" + msg; ",
+							"pm.environment.set(\"globalLog\", globalLog);",
+							"",
+							"pm.environment.set(\"reconfigModel\", pm.collectionVariables.get(\"reconfigModel\") + pm.response.responseTime);"
+						],
+						"type": "text/javascript",
+						"id": "2c05aad8-0169-416e-aef6-2012327f8440"
+					}
+				}
+			],
+			"id": "8a5478d1-c1f7-4d89-a9d3-dac5455f5a3f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cacheInstanceId\": \"c3EDonBpw0Kr6Gf83Y9HDd2084zToZVlBpXuVvIeT1Hd6nL2tcxktMU2l6nFoobN~86832628\",    \r\n   \r\n    \"configData\": {\r\n\r\n        \"_setonePackArraySet\":{ \r\n           \"items\":[\r\n                {\r\n                    \"_index\":0,\r\n                    \"mediumAry_pL\":{\r\n\t\t\t\t\t\t\"value\":\"DS 1\"\r\n\t\t\t\t\t},\r\n                    \"party_onePack_pL\" : \"Accepting Party\"\r\n                }\r\n           ]\r\n        }\r\n    }\r\n}"
+				},
+				"url": "{{siteURL}}/configdigitalRealty.products.onePack/actions/_update"
+			},
+			"response": []
+		},
+		{
+			"name": "Add to Transaction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var docNumber = pm.environment.get(\"document_number\");",
+							"var msg = \"docNumber:\" + docNumber + \":ConfigSolution_AddtoTxn API took:\"+ pm.response.responseTime;",
+							"console.log(msg);",
+							"var globalLog = pm.environment.get(\"globalLog\");",
+							"globalLog = globalLog + \";\" + msg; ",
+							"pm.environment.set(\"globalLog\", globalLog);",
+							"pm.environment.set(\"configSoln\", pm.environment.get(\"configSoln\") + pm.response.responseTime);"
+						],
+						"type": "text/javascript",
+						"id": "d1f64572-e36d-447b-8102-87ec65861475"
+					}
+				}
+			],
+			"id": "a23d721d-25fb-47d0-8dce-229b2b1e11bf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cacheInstanceId\": \"c3EDonBpw0Kr6Gf83Y9HDd2084zToZVlBpXuVvIeT1Hd6nL2tcxktMU2l6nFoobN~86832628\"\r\n}"
+				},
+				"url": "{{siteURL}}/configdigitalRealty.products.onePack/actions/_addToTxn"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{SFDC_Password}}",
+			"username": "{{SFDC_User}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "bd2bcb38-81bd-4629-aa3d-4cb8a8712344"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "0d862230-c7db-4f4c-949c-055a6f5eb3be"
+			}
+		}
+	]
+}
