@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "780f70c6-e907-4fcc-a6b3-41dcc68dbe6b",
+		"name": "Azure Service Bus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Getting an access token",
+			"id": "16b99432-3e78-48ab-8deb-aa998fc0c936",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"grant_type": "client_credentials",
+						"clientSecret": "6G48Q~nx6aHbS0BD_LGTgc1lWTY7WhsaiG44Tdxu",
+						"accessTokenUrl": "https://login.microsoftonline.com/digitalrealty.onmicrosoft.com/oauth2/v2.0/token",
+						"tokenName": "Getting an access token",
+						"clientId": "e9420919-f232-4535-b1bd-8c1649f38e59",
+						"scope": "https://servicebus.azure.net/.default",
+						"addTokenTo": "header"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "grant_type",
+						"value": "authorization_code",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "e9420919-f232-4535-b1bd-8c1649f38e59",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "6G48Q~nx6aHbS0BD_LGTgc1lWTY7WhsaiG44Tdxu",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "https://servicebus.azure.net/.default",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://login.microsoftonline.com/digitalrealty.onmicrosoft.com/oauth2/v2.0/token"
+			},
+			"response": []
+		},
+		{
+			"name": "Seding Messages",
+			"id": "e0f4bddd-324e-4c63-b439-d71f670198d7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSIsImtpZCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2VidXMuYXp1cmUubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvNDVkNTNhNDAtMTMxYy00ODk2LTk0ZWYtOGNkMzUzOGIzODM0LyIsImlhdCI6MTcwNjI4MjA0OCwibmJmIjoxNzA2MjgyMDQ4LCJleHAiOjE3MDYyODU5NDgsImFpbyI6IkUyVmdZRkJzWDc5aGN0N3FQbE9CWlZuM290VU1BQT09IiwiYXBwaWQiOiJlOTQyMDkxOS1mMjMyLTQ1MzUtYjFiZC04YzE2NDlmMzhlNTkiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NWQ1M2E0MC0xMzFjLTQ4OTYtOTRlZi04Y2QzNTM4YjM4MzQvIiwib2lkIjoiYTc0MTgzODYtM2E2Ni00YTI4LWExNzItNzEzZTYyNTRhZjE1IiwicmgiOiIwLkFTY0FRRHJWUlJ3VGxraVU3NHpUVTRzNE5Qa09vWUJvZ1QxSnFfa3lsOFR2Ymp3QUFRQS4iLCJzdWIiOiJhNzQxODM4Ni0zYTY2LTRhMjgtYTE3Mi03MTNlNjI1NGFmMTUiLCJ0aWQiOiI0NWQ1M2E0MC0xMzFjLTQ4OTYtOTRlZi04Y2QzNTM4YjM4MzQiLCJ1dGkiOiJIZGxDcHJ3eEEwLU5iWk1LWHlhYUFBIiwidmVyIjoiMS4wIn0.NTPjQrySY-vwjgu4FkJ-bdl6lhRFWeaTjh_cx2j0aEstQKgO3BSnlRfcVPC_Eyw4p7M2glRvT8t2NKH2mf502TXKUIoajUdq9a8oa9eUf04PX3RCwovqloS1_xfLpUD9Do3Zvk0yqj3M8NHj3fT5RLqbOT8YqgtQ_KJ0b3mfAdWrc3EW4K1Ri6D6Ylafv3gFKGge_YNwWde2vEEqH9ZO9ulyRxSZu-j6BUv04NJ2N0ysx9Gq6MkAMfSVdzIEyhgAcB6_XmuAEtlKnBk5XQHBUIG3EHmqicst15PaCzSfDd5T9Vbwy_AKzItOS3ASjGxI7PFB8GQhPCF2ajq8eIpQIA",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"Hello, Azure Service Bus!\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dlr-t52-entint-bus.servicebus.windows.net/topic3/messages?api-version=2015-01",
+					"protocol": "https",
+					"host": [
+						"dlr-t52-entint-bus",
+						"servicebus",
+						"windows",
+						"net"
+					],
+					"path": [
+						"topic3",
+						"messages"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2015-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seding Messages Copy",
+			"id": "66d0b96d-8c25-4ed7-a768-2082483016e0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSIsImtpZCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2VidXMuYXp1cmUubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvNDVkNTNhNDAtMTMxYy00ODk2LTk0ZWYtOGNkMzUzOGIzODM0LyIsImlhdCI6MTcwNjI4MjA0OCwibmJmIjoxNzA2MjgyMDQ4LCJleHAiOjE3MDYyODU5NDgsImFpbyI6IkUyVmdZRkJzWDc5aGN0N3FQbE9CWlZuM290VU1BQT09IiwiYXBwaWQiOiJlOTQyMDkxOS1mMjMyLTQ1MzUtYjFiZC04YzE2NDlmMzhlNTkiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NWQ1M2E0MC0xMzFjLTQ4OTYtOTRlZi04Y2QzNTM4YjM4MzQvIiwib2lkIjoiYTc0MTgzODYtM2E2Ni00YTI4LWExNzItNzEzZTYyNTRhZjE1IiwicmgiOiIwLkFTY0FRRHJWUlJ3VGxraVU3NHpUVTRzNE5Qa09vWUJvZ1QxSnFfa3lsOFR2Ymp3QUFRQS4iLCJzdWIiOiJhNzQxODM4Ni0zYTY2LTRhMjgtYTE3Mi03MTNlNjI1NGFmMTUiLCJ0aWQiOiI0NWQ1M2E0MC0xMzFjLTQ4OTYtOTRlZi04Y2QzNTM4YjM4MzQiLCJ1dGkiOiJIZGxDcHJ3eEEwLU5iWk1LWHlhYUFBIiwidmVyIjoiMS4wIn0.NTPjQrySY-vwjgu4FkJ-bdl6lhRFWeaTjh_cx2j0aEstQKgO3BSnlRfcVPC_Eyw4p7M2glRvT8t2NKH2mf502TXKUIoajUdq9a8oa9eUf04PX3RCwovqloS1_xfLpUD9Do3Zvk0yqj3M8NHj3fT5RLqbOT8YqgtQ_KJ0b3mfAdWrc3EW4K1Ri6D6Ylafv3gFKGge_YNwWde2vEEqH9ZO9ulyRxSZu-j6BUv04NJ2N0ysx9Gq6MkAMfSVdzIEyhgAcB6_XmuAEtlKnBk5XQHBUIG3EHmqicst15PaCzSfDd5T9Vbwy_AKzItOS3ASjGxI7PFB8GQhPCF2ajq8eIpQIA",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"Hello, Azure Service Bus!\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dlr-t52-entint-bus.servicebus.windows.net/topic3/messages?api-version=2015-01",
+					"protocol": "https",
+					"host": [
+						"dlr-t52-entint-bus",
+						"servicebus",
+						"windows",
+						"net"
+					],
+					"path": [
+						"topic3",
+						"messages"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2015-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"id": "24c381e6-5a3d-4ee1-95f7-e39812619f6c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
