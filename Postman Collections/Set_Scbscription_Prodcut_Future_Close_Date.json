@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "57299233-9d76-4aff-93b9-0c16eb7531b9",
+		"name": "Set Subscription Product Future Close Date",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all subscription products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40b73c6a-98bd-411a-8065-84d1a4a3b32f",
+						"exec": [
+							"//validate status code. if it's good, then set puid into collection variable\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"    let jsonResponse = pm.response.json();\r",
+							"    let smProdPuid = jsonResponse.items[0].SubscriptionProductPuid;\r",
+							"    console.log(smProdPuid);\r",
+							"\r",
+							"    pm.collectionVariables.set(\"subscriptionProductPuid\", smProdPuid);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "27d652f9-c923-4658-b13e-783b29a074e1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "REST-Framework-Version",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts?onlyData=true",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptionProducts"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "SubscriptionNumber,SubscriptionProductPuid,LineNumber,Status,StartDate,ProductName,ProductAttribute_c,Quantity,AssetIdentificationNumber_c,CaseNumberProjectID_c,Currency,FutureProductCloseDate_c,ProductCloseInfo_c,BillToAccountDescription,BillToAccountNumber,ShipToPartySiteName,BillToPartyName;charges:ChargeName,UnitListPrice",
+							"disabled": true
+						},
+						{
+							"key": "onlyData",
+							"value": "true"
+						},
+						{
+							"key": "q",
+							"value": "SubscriptionNumber='020-C14197_XC'",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": "AssetIdentificationNumber_c = 'SCCFBR00882392'",
+							"description": "and Status = 'ORA_ACTIVE'",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": null,
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": "To retreive all the subscription products"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a subscription product",
+			"id": "881ed47b-d76a-4570-bd83-d8e02c392c7d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FutureProductCloseDate_c\": \"{{futureProductCloseDate}}\",\r\n    \"ProductCloseInfo_c\": \"{{productCloseInfo}}\" //\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/{{subscriptionProductPuid}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a subscription product asset id",
+			"id": "2f8cc4b7-c368-43b5-89f8-148b552ec1bb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"AssetIdentificationNumber_c\": \"SCCFBR00862551\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/021-C125-XC-862551-INCCC-Fiber"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a subscription product",
+			"id": "fbefb21e-f6dd-4725-b706-a7ed8031aaea",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FutureProductCloseDate_c\": \"{{futureProductCloseDate}}\",\r\n    \"ProductCloseInfo_c\": \"{{productCloseInfo}}\" //\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/{{subscriptionProductPuid}}"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{serviceAccountPassword}}",
+			"username": "{{serviceAccount}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5478334d-68d4-49f2-b76a-2d68b553e89e",
+				"type": "text/javascript",
+				"exec": [
+					"console.clear();",
+					"console.log(\"Run \"); ",
+					"",
+					"console.log(\"FNT Asset ID:\" + pm.collectionVariables.get(\"fntAssetId\") ",
+					"+ \". Set Future Close Date: \" + pm.collectionVariables.get(\"futureProductCloseDate\") ",
+					"+ \". Set Close Reason: \"+ pm.collectionVariables.get(\"productCloseInfo\"));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f621b853-9137-437e-ae2c-1ccf712a9f4a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "fntAssetId",
+			"value": "SCCFBR00801196",
+			"type": "string"
+		},
+		{
+			"key": "subscriptionProductPuid",
+			"value": ""
+		},
+		{
+			"key": "productCloseInfo",
+			"value": "Disconnect~ORA_PRORATE_WITH_CREDIT",
+			"type": "string"
+		},
+		{
+			"key": "futureProductCloseDate",
+			"value": "2023-06-16",
+			"type": "string"
+		}
+	]
+}
