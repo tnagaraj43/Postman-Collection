@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "b175f7b0-0b20-4e73-ab90-88e053bd00e8",
+		"name": "GlobalPortal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SIT",
+			"item": [],
+			"id": "a2dba5d9-580b-438f-b6f7-d92ae2c70624"
+		},
+		{
+			"name": "UAT",
+			"item": [
+				{
+					"name": "Get a Delivery",
+					"id": "7a8dda0d-d656-4ac1-8a77-af5bb3f6fd61",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"tokenName": "Customer_Delivery_Requests",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{siteURL}}/global-portal-v1/deliveries?caseNumber=00863864",
+							"host": [
+								"{{siteURL}}"
+							],
+							"path": [
+								"global-portal-v1",
+								"deliveries"
+							],
+							"query": [
+								{
+									"key": "caseNumber",
+									"value": "00863864"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetDelivaries",
+					"id": "9b4b91b7-e114-4c92-a82e-1b25698a4ea7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"tokenName": "Customer_Delivery_Requests",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{siteURL}}/global-portal-v1/getdeliveries?pagenumber=1",
+							"host": [
+								"{{siteURL}}"
+							],
+							"path": [
+								"global-portal-v1",
+								"getdeliveries"
+							],
+							"query": [
+								{
+									"key": "pagenumber",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Delivery",
+					"id": "cbcdb6d8-0942-438c-b9b8-1cabdab257b1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"tokenName": "Customer_Delivery_Requests",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contact\": \"fieldengineering@colt.net.invalid\",\r\n    \"customer_location_id\": \"101-C14212\",\r\n    \"subject\": \"Shipping & Receiving Ticket - Colt Technology Services Co., Ltd. take 2\",\r\n    \"receiving_facility\": \"ORD10\",\r\n    \"estimated_delivery_date\": \"08/17/2023\",\r\n    \"contacts\": \"gsprojectmanagers@colt.net.invalid,coltnocirmdata@colt.net.invalid,marcus.roberson@ledcor.com.invalid,david.martello@ledcor.com.invalid\",\r\n    \"note\": \"Hi Team, This is an inbound shipment request. Below are the details: tracking number: 6522055555555 tracking number\",\r\n    \"packages\": \"package: 1,Courier: FedEx,Tracking_Reference_Number: 652205555555,Shipping_Party: SWEDESBORO, NJ, US,Delivery_Date: 08-17-2023 18:30,Package_Description_and_Contents: This is an inbound shipment and need to be received. This box contains (CVR-QSFP-SFP10G and QFX-QSFP+-40G-SR4 ) SFPs,package: 2,Courier: DHL,Tracking_Reference_Number: AAA-1234-5678,Shipping_Party: DLR,Delivery_Date: 0001-01-01T00:00:00\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/global-portal-v1/deliveries/create"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateDelivery",
+					"id": "61541b2b-d81a-431b-bbe4-cdb28dd48a44",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"tokenName": "Customer_Delivery_Requests",
+								"clientSecret": "f19eeedc8507e0fb3d4580eac46553d14eb0334c74b3ccf24426f49bc594635d",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"casenumber\": \"00879457\",\r\n  \"status\": \"Open\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/global-portal-v1/updatedelivery"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Access Rights By Customer Location Id",
+					"id": "0acae095-156c-4d92-b864-ed65c23cc429",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"tokenName": "Customer_Delivery_Requests",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{siteURL}}/global-portal-v1/getaccessrightsbycustomerlocationid?CustomerLocationId=191-CCLE001",
+							"host": [
+								"{{siteURL}}"
+							],
+							"path": [
+								"global-portal-v1",
+								"getaccessrightsbycustomerlocationid"
+							],
+							"query": [
+								{
+									"key": "CustomerLocationId",
+									"value": "191-CCLE001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Access Rights",
+					"id": "0f804aba-55b2-4a11-82d1-4372f9e27a27",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"tokenName": "Customer_Delivery_Requests",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"CustomerLocationId\": \"191-CCLE001\",\r\n  \"ContactEmailAddress\": \"michelle.tomlinson@ericsson.com.invalid\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/global-portal-v1/createaccessrights"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a portal user contact",
+					"id": "b501d380-26c1-4211-bf0e-e41d8cc42d4b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"client_authentication": "body",
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customerLocationId\": \"101-C14212\",\r\n  \"email\": \"Radh.S@dlr.com.test\",\r\n  \"firstName\": \"Radhe\",\r\n  \"lastName\": \"Shyam\",\r\n  \"mobilePhone\": \"32098124\",\r\n  \"phone\": \"string\",\r\n  \"portalRole\": \"Deactivate\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/global-portal-v1/user/contacts"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit portal contact details",
+					"id": "df8b7b7e-32c8-46a8-b119-1fbeeee83e3a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"client_authentication": "body",
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"Rupesh.S@dlr.com.test\",\r\n  \"firstName\": \"Rupesh\",\r\n  \"lastName\": \"Shirmalla\",\r\n  \"mobilePhone\": \"123456\",\r\n  \"phone\": \"string\",\r\n  \"portalRole\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{siteURL}}/global-portal-v1/user/contacts/?contactNum=530189",
+							"host": [
+								"{{siteURL}}"
+							],
+							"path": [
+								"global-portal-v1",
+								"user",
+								"contacts",
+								""
+							],
+							"query": [
+								{
+									"key": "contactNum",
+									"value": "530189"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Portal Export - Create an access rights to contact",
+					"id": "1f80c8fe-f927-4ecc-979f-06d55cca6008",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"client_authentication": "body",
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\t\"customerLocationId\": \"101-C14212\",\r\n\t\t\"contactEmail\": \"Theja.Nagraj@dlr.com.test\",\r\n\t\t\"permissionLevel\": \"Global Administrator\",\r\n\t\t\"requestSupport\": true,\r\n\t\t\"accessFacility\": true,\r\n\t\t\"reviewInvoice\": true,\r\n\t\t\"placeOrder\": true,\r\n\t\t\"interconnectionNotifications\": true,\r\n\t\t\"slaNotification\": true\r\n\t}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/global-portal-v1/user/contacts/530189/accessrights"
+					},
+					"response": []
+				},
+				{
+					"name": "Portal Export - Update access rights to contact",
+					"id": "3223ffd4-2c0e-4fe2-b0cf-6a01bda88338",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"permissionLevel\": \"string\",\r\n  \"requestSupport\": true,\r\n  \"accessFacility\": true,\r\n  \"reviewInvoice\": true,\r\n  \"placeOrder\": true,\r\n  \"requestMonitor\": true,\r\n  \"orderCrossConnect\": true,\r\n  \"orderIpAddress\": true,\r\n  \"orderIpBandwidth\": true,\r\n  \"orderInternetExchange\": true,\r\n  \"orderMetroConnect\": true,\r\n  \"orderPower\": true,\r\n  \"orderPackPrecabling\": true,\r\n  \"slaNotification\": true,\r\n  \"remoteHandsNotification\": true,\r\n  \"dataCenterNotification\": true,\r\n  \"emergencyNotification\": true,\r\n  \"ipNetworkNotification\": true,\r\n  \"interconnectionNotification\": true,\r\n  \"orderIntraCustomerConnectivity\": true,\r\n  \"orderRemoteHands\": true,\r\n  \"orderRiserConnect\": true,\r\n  \"orderServiceExchange\": true,\r\n  \"orderServiceExchangeCloudRouter\": true,\r\n  \"orderServiceExchangePort\": true,\r\n  \"orderSpace\": true,\r\n  \"orderVXC\": true,\r\n  \"govermentId\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{siteURL}}/global-portal-v1/user/contacts/530192/accessrights/0000445439"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a portal user contact",
+					"id": "4bec0322-eea0-4496-80d9-93d56638c711",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"grant_type": "client_credentials",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{siteURL}}/global-portal-v1/user/contacts/165541"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Attachments list request",
+					"id": "bb9a6d7f-4de3-4038-8e74-b680f928e8ba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{siteURL}}/global-portal-v1/deliveries/5007c00000G9djJ/attachments"
+					},
+					"response": []
+				},
+				{
+					"name": "User Contact",
+					"id": "420e76be-b575-4120-85b0-d95839377ef2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{siteURL}}/global-portal-v1/user/contacts?customerLocationId=191-CCLE001&email=rupesh.s@dlr.com.test.invalid ",
+							"host": [
+								"{{siteURL}}"
+							],
+							"path": [
+								"global-portal-v1",
+								"user",
+								"contacts"
+							],
+							"query": [
+								{
+									"key": "customerLocationId",
+									"value": "191-CCLE001"
+								},
+								{
+									"key": "email",
+									"value": "rupesh.s@dlr.com.test.invalid "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "204dd45d-171b-46bf-88f1-3d45a9531d49",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "d107ada8-583a-4874-a4f0-017a31b0856a"
+		}
+	]
+}
