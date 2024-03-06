@@ -53,7 +53,7 @@
 					"response": []
 				},
 				{
-					"name": "Get a Delivery Copy",
+					"name": "create a single attachment for Remote hands case",
 					"id": "cb74cb3a-afab-4c25-9639-812150c155ae",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
