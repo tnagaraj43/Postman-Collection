@@ -53,6 +53,45 @@
 					"response": []
 				},
 				{
+					"name": "Get a Delivery Copy",
+					"id": "cb74cb3a-afab-4c25-9639-812150c155ae",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientSecret": "f7fb9ea8c87126b5aa98a9045d9f787b0e31356e2ed3f03122e8c3874ea1fd13",
+								"tokenName": "Customer_Delivery_Requests",
+								"clientId": "bd314382e02803087d5515a8b8002809ee35027e2460a91564191da78ec1849f",
+								"accessTokenUrl": "https://apim.workato.com/oauth2/token",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{siteURL}}/global-portal-v1/deliveries?caseNumber=00863864",
+							"host": [
+								"{{siteURL}}"
+							],
+							"path": [
+								"global-portal-v1",
+								"deliveries"
+							],
+							"query": [
+								{
+									"key": "caseNumber",
+									"value": "00863864"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GetDelivaries",
 					"id": "9b4b91b7-e114-4c92-a82e-1b25698a4ea7",
 					"protocolProfileBehavior": {
